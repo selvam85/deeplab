@@ -21,8 +21,17 @@
     <h2>DeepLab - Image Semantic Segmentation</h2>
 
     <div>
-        <input type="file" id="chooseFiles" accept="image/*" disabled/>
-        <button id="segmentImage">Segment Image</button>
+        <select name="modelNameSelect" id="modelNameSelect">
+            <option value="pascal">Pascal</option>
+            <option value="cityscapes">City Scapes</option>
+            <option value="ade20k">ADE20K</option>
+          </select>
+          <button id="loadModel">Load Model</button>
+          <p id="modelLoadedStatus" style="color: mediumblue">Model not loaded..</p>
+    </div>
+    <div>
+        <input type="file" id="chooseFiles" accept="image/*"/>
+        <button id="segmentImage" disabled>Segment Image</button>
     </div>
 
     <img id="image" width="500" height="auto" crossorigin="anonymous">

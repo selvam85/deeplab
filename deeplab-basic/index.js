@@ -1,6 +1,9 @@
 let model;
 const chooseFiles = document.getElementById('chooseFiles');
 const segmentImageButton = document.getElementById("segmentImage");
+const loadModelButton = document.getElementById("loadModel");
+const modelNameSelect = document.getElementById("modelNameSelect");
+const modelLoadedStatus = document.getElementById("modelLoadedStatus");
 const legendsDiv = document.getElementById("legends");
 const image = document.getElementById('image');
 const canvas = document.getElementById('canvas');
@@ -14,6 +17,21 @@ chooseFiles.onchange = () => {
 };
 
 segmentImageButton.onclick = predict;
+
+loadModelButton.onclick = async () => {
+    segmentImageButton.disabled = true;
+    updateModelLoadStatus("Model Loading...");
+
+    const modelName = modelNameSelect.options[modelNameSelect.selectedIndex].value;
+    await loadModel(modelName);
+    updateModelLoadStatus(modelName + " model loaded!");
+
+    segmentImageButton.disabled = false;
+};
+
+function updateModelLoadStatus(status) {
+    modelLoadedStatus.innerHTML = status;
+}
 
 async function loadModel(modelName) {
     model = await deeplab.load({ "base": modelName, "quantizationBytes": 2 });
@@ -52,10 +70,3 @@ function displayLegends(legendObj) {
         legendsDiv.appendChild(span);
     });
 }
-
-async function main() {
-    await loadModel("pascal");
-    chooseFiles.disabled = false;
-}
-
-main();
