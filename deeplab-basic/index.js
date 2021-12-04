@@ -1,9 +1,6 @@
 let model;
 const chooseFiles = document.getElementById('chooseFiles');
-const segmentImageButton = document.getElementById("segmentImage");
-const loadModelButton = document.getElementById("loadModel");
 const modelNameSelect = document.getElementById("modelNameSelect");
-const modelLoadedStatus = document.getElementById("modelLoadedStatus");
 const legendsDiv = document.getElementById("legends");
 const image = document.getElementById('image');
 const canvas = document.getElementById('canvas');
@@ -16,9 +13,9 @@ chooseFiles.onchange = () => {
     }
 };
 
-segmentImageButton.onclick = predict;
+document.getElementById("segmentImage").onclick = predict;
 
-loadModelButton.onclick = async () => {
+document.getElementById("loadModel").onclick = async () => {
     segmentImageButton.disabled = true;
     updateModelLoadStatus("Model Loading...");
 
@@ -30,7 +27,7 @@ loadModelButton.onclick = async () => {
 };
 
 function updateModelLoadStatus(status) {
-    modelLoadedStatus.innerHTML = status;
+    document.getElementById("modelLoadedStatus").innerHTML = status;
 }
 
 async function loadModel(modelName) {
