@@ -54,6 +54,7 @@ function renderPrediction(prediction) {
 
 function displayLegends(legendObj) {
     legendsDiv.innerHTML = "";
+    document.getElementById("legendLabel").style.visibility = "visible";
 
     Object.keys(legendObj).forEach((legend) => {
         const [red, green, blue] = legendObj[legend];
