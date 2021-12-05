@@ -27,12 +27,12 @@ document.getElementById("loadModel").onclick = async () => {
     segmentImageButton.disabled = false;
 };
 
-function updateModelLoadStatus(status) {
-    document.getElementById("modelLoadedStatus").innerHTML = status;
-}
-
 async function loadModel(modelName) {
     model = await deeplab.load({ "base": modelName, "quantizationBytes": 2 });
+}
+
+function updateModelLoadStatus(status) {
+    document.getElementById("modelLoadedStatus").innerHTML = status;
 }
 
 async function predict() {
@@ -42,7 +42,7 @@ async function predict() {
 
 function renderPrediction(prediction) {
     const { legend, height, width, segmentationMap } = prediction;
-    console.log(`prediction: ${JSON.stringify(prediction.legend)}`);
+    console.log(`prediction: ${JSON.stringify(prediction)}`);
 
     const segmentationMapData = new ImageData(segmentationMap, width, height);
     canvas.width = image.width;
