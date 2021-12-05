@@ -1,6 +1,7 @@
 let model;
 const chooseFiles = document.getElementById('chooseFiles');
 const modelNameSelect = document.getElementById("modelNameSelect");
+const segmentImageButton = document.getElementById("segmentImage");
 const legendsDiv = document.getElementById("legends");
 const image = document.getElementById('image');
 const canvas = document.getElementById('canvas');
@@ -13,7 +14,7 @@ chooseFiles.onchange = () => {
     }
 };
 
-document.getElementById("segmentImage").onclick = predict;
+segmentImageButton.onclick = predict;
 
 document.getElementById("loadModel").onclick = async () => {
     segmentImageButton.disabled = true;
