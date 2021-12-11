@@ -211,7 +211,7 @@ function displayLegends(legendObj) {
         span.style.marginRight = '10px';
         span.style.color = '#ffffff';
         //Set storeObjectName() as the function to be invoked on click of the span element
-        span.onclick = storeObjectName;
+        span.onclick = storeObjectColor;
 
         //Append each of the span element to the legends div wrapper element
         legendsDiv.appendChild(span);
@@ -230,7 +230,7 @@ function displayLegends(legendObj) {
 //Object to hold the color of each legend
 let objectColors = {};
 //Function to store the color for each selected object
-function storeObjectName(e) {
+function storeObjectColor(e) {
     //Get the selected span from the user click event on any of the legend
     let target = (e.target) ? e.target : e.srcElement;
     
@@ -240,7 +240,7 @@ function storeObjectName(e) {
     let objectColor = window.getComputedStyle(target).backgroundColor;
     //Convert the obtained color to an number array
     objectColor = objectColor.replace('rgb(', '').replace(')', '').split(',').map(Number);
-    //Set the legend name and it's color in the objectColors object.
+    //Set the legend name and its color in the objectColors object.
     objectColors[objectName] = objectColor;
 
     //Draw a border on the legend that is click to make it appear as selected
