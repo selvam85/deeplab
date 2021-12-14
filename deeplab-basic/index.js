@@ -45,8 +45,8 @@ function renderPrediction(prediction) {
     console.log(`prediction: ${JSON.stringify(prediction)}`);
 
     const segmentationMapData = new ImageData(segmentationMap, width, height);
-    canvas.width = image.width;
-    canvas.height = image.height;
+    canvas.width = width;
+    canvas.height = height;
     ctx.putImageData(segmentationMapData, 0, 0);
 
     displayLegends(legend);
